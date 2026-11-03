@@ -4522,7 +4522,8 @@ bool GradientUtils::shouldRecompute(const Value *val,
 
   // cache a call, assuming its longer to run that
   if (isa<CallInst>(val)) {
-    llvm::errs() << " caching call: " << *val << "\n";
+    if (EnzymePrint)
+      llvm::errs() << " caching call: " << *val << "\n";
     // cast<CallInst>(val)->getCalledFunction()->dump();
     return false;
   }
